@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboReply Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Custom CSS -->
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3" style="background-color: #0066FF;">
+        <div class="container">
+            <!-- Logo Section -->
+            <div class="d-flex align-items-center me-auto">
+                <a class="navbar-brand fw-bold text-white" href="#">RoboReply</a>
+            </div>
+
+            <!-- Navbar Items Section -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#team">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Buttons Section -->
+            <div class="d-flex align-items-center ms-auto">
+                <a class="btn text-white btn-rounded me-2 sign-in-btn" href="signin">Sign In</a>
+                <a class="btn btn-light btn-rounded sign-up-btn" href="signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-white py-5" style="background-color: #0066FF;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold">Revolutionize Customer Service with Chatbot</h1>
+                    <p class="mt-3">Say goodbye to long wait times and frustrating interactions. Our chatbot robots
+                        provide 24/7 assistance and personalized service for your customers.</p>
+                    <a href="signup" class="btn btn-light btn-rounded mt-4 px-5">Get Started</a>
+                    <div class="mt-4">
+                        <p>Trusted by more than 500,000+ companies across the globe</p>
+                        <div class="d-flex gap-3">
+                            <img src="../static/images/amazon.svg" alt="Amazon" width="80">
+                            <img src="../static/images/adobe.svg" alt="Adobe" width="80">
+                            <img src="../static/images/netflix.svg" alt="Netflix" width="80">
+                            <img src="../static/images/spotify.svg" alt="Spotify" width="80">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="../static/images/bot.png" alt="Chatbot" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced AI Technology Section -->
+    <section class="features py-5" style="background-color: #f9f9f9;">
+        <div class="container">
+            <!-- Title and Description -->
+            <h2 class="fw-bold text-center mb-3">Advanced AI Technology</h2>
+            <p class="text-center mb-5">
+                Our chatbot robots use the latest artificial intelligence technology to understand and respond to
+                customer inquiries,
+                providing accurate and efficient assistance.
+            </p>
+
+            <!-- Content Section -->
+            <div class="row align-items-center">
+                <!-- Left Labels -->
+                <div class="col-md-3  text-center">
+                    <div class="p-3 shadow rounded feature-hover ">Intelligent Conversations</div>
+                    <div class="p-3 shadow rounded feature-hover mx-auto mt-5">Analytics and Reporting</div>
+                    <div class="p-3 shadow rounded feature-hover mx-auto mt-5">Always-on Accessibility</div>
+                </div>
+
+                <!-- Center Image -->
+                <div class="col-md-5 text-center">
+                    <img src="../static/images/bot2.png" alt="AI Features" class="img-fluid">
+                </div>
+
+                <!-- Right Labels -->
+                <div class="col-md-3 text-center mt-4 mt-md-0">
+                    <div class="p-3 shadow rounded feature-hover mx-auto">Personalized Interactions</div>
+                    <div class="p-3 shadow rounded feature-hover mx-auto mt-5">Multi-Language Support</div>
+                    <div class="p-3 shadow rounded feature-hover mx-auto mt-5">Secure Data Encryption</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stay Connected on All Channels Section -->
+    <section class="channels py-5 bg-light">
+        <div class="container">
+            <!-- Title and Subtitle -->
+            <h2 class="fw-bold text-center mb-3">Stay Connected on All Channels</h2>
+            <p class="text-center mb-5">Keep your customers happy by being available in their preferred channels.</p>
+
+            <!-- Cards -->
+            <div class="row g-4"> <!-- g-4 for spacing between cards -->
+                <!-- Card 1 -->
+                <div class="col-md-4 border-0 bg-light">
+                    <div class="shadow h-100 p-4 rounded border-0">
+                        <div class="d-flex align-items-start mb-3 border-0">
+                            <i class="bi bi-globe fs-1 text-primary me-3"></i>
+                            <div class="border-0">
+                                <h4 class="fw-bold mb-1">Website</h4>
+                                <p class="text-muted mb-0">Reach out to visitors proactively.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-link text-primary fw-bold text-decoration-none">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-4 border-0 bg-light">
+                    <div class="shadow h-100 p-4 rounded border-0">
+                        <div class="d-flex align-items-start mb-3 border-0">
+                            <i class="bi bi-chat-dots fs-1 text-primary me-3"></i>
+                            <div class="border-0">
+                                <h4 class="fw-bold mb-1">Live Chat</h4>
+                                <p class="text-muted mb-0">Provide instant assistance.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-link text-primary fw-bold text-decoration-none">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-4 border-0 bg-light">
+                    <div class="shadow h-100 p-4 rounded border-0">
+                        <div class="d-flex align-items-start mb-3 border-0">
+                            <i class="bi bi-messenger fs-1 text-primary me-3 "></i>
+                            <div class="border-0">
+                                <h4 class="fw-bold mb-1">Messenger</h4>
+                                <p class="text-muted mb-0">Real-time audience connection.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-link text-primary fw-bold text-decoration-none">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials py-5 bg-light">
+        <div class="container text-center">
+            <!-- Title and Subtitle -->
+            <h2 class="fw-bold text-center mb-3">Hear From Our Customer</h2>
+            <p class="text-center mb-5">See how BotResponse has helped businesses like yours improve their customer
+                service.</p>
+
+            <!-- Testimonial Row -->
+            <div class="row mt-5 g-4">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 shadow rounded">
+                        <p class="testimonial-text mb-3">"Customer satisfaction skyrocketed! Since implementing
+                            BotResponse, our customers feel more valued, and the engagement rates have significantly
+                            improved."</p>
+                        <hr class="my-4">
+                        <div class="testimonial-image">
+                            <img src="../static/images/person.avif" alt="Customer 1" class="rounded-circle mb-3" width="80"
+                                height="80">
+                            <h5 class="fw-bold">John Doe</h5>
+                            <p class="text-muted">CEO, Tech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 shadow rounded">
+                        <p class="testimonial-text mb-3">"Wait times cut in half. BotResponse helped us streamline
+                            support, reduce wait times, and offer 24/7 customer service that’s reliable and efficient."
+                        </p>
+                        <hr class="my-4">
+                        <div class="testimonial-image">
+                            <img src="../static/images/person.avif" alt="Customer 2" class="rounded-circle mb-3" width="80"
+                                height="80">
+                            <h5 class="fw-bold">Jane Smith</h5>
+                            <p class="text-muted">Operations Manager, Retail Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 shadow rounded">
+                        <p class="testimonial-text mb-3">"Exceeded cost-saving expectations. By implementing
+                            BotResponse, we reduced our support team’s workload, saving both time and costs while
+                            maintaining high-quality support."</p>
+                        <hr class="my-4">
+                        <div class="testimonial-image">
+                            <img src="../static/images/person.avif" alt="Customer 3" class="rounded-circle mb-3" width="80"
+                                height="80">
+                            <h5 class="fw-bold">Michael Green</h5>
+                            <p class="text-muted">CTO, Digital Enterprises</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about section-padding py-5" id="about"
+        style="min-height: 100vh; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <!-- Section Header -->
+                            <div class="section-header text-center mb-4">
+                                <h2 class="fw-bold">About Us</h2>
+                                <p class="text-muted title">Revolutionizing Customer Support with AI-Powered Chatbots
+                                </p>
+                            </div>
+
+                            <!-- About Content -->
+                            <div class="row align-items-center">
+                                <!-- Image Column -->
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="about-img">
+                                        <img src="../static/images/about-us.jpg" alt="About Us" class="img-fluid rounded shadow"
+                                            style="max-height: 400px; object-fit: cover;">
+                                    </div>
+                                </div>
+
+                                <!-- Text Column -->
+                                <div class="col-lg-8 col-md-12 ps-lg-5 mt-md-4">
+                                    <div class="about-text">
+                                        <h3 class="mb-4" style="font-size: 1.8rem; font-weight: bold;">Empowering
+                                            Businesses Through Cutting-Edge AI</h3>
+                                        <p>
+                                            At RoboReply, we are dedicated to transforming the way businesses interact
+                                            with their customers. Our AI-powered chatbot solutions are designed to
+                                            provide instant, accurate, and efficient support, ensuring that your
+                                            customers are always satisfied.
+                                        </p>
+                                        <p>
+                                            Whether you're looking to reduce response times, increase customer
+                                            engagement, or streamline your support processes, RoboReply is here to help.
+                                            Our technology is powered by advanced artificial intelligence, enabling
+                                            seamless conversations across multiple channels, including websites, live
+                                            chat, and messaging platforms.
+                                        </p>
+                                        <p>
+                                            Join us as we redefine customer support. With RoboReply, you can focus on
+                                            growing your business while we handle your customer interactions
+                                            effortlessly and effectively.
+                                        </p>
+                                        <button class="btn btn-primary mt-3">Learn More</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End About Content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section-padding" id="services"
+        style="min-height: 100vh; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <!-- Card Wrapper -->
+            <div class="card shadow-lg p-4 border-0" style="width: 100%; max-width: 1200px;">
+                <!-- Section Header -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-header text-center pb-5">
+                            <h2 class="fw-bold">Our Services</h2>
+                            <p class="text-muted">
+                                Simplifying customer engagement with powerful AI-driven solutions tailored to your
+                                business needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Cards -->
+                <div class="row text-center">
+                    <!-- Card 1 - AI Chatbots -->
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 80px; height: 80px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center;">
+                                <i class="bi bi-chat-dots" style="font-size: 32px; color: #28a745;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title fw-bold">AI Chatbots</h3>
+                                <p class="card-text">
+                                    Engage customers with intelligent, 24/7 chat support across multiple platforms.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 - Multi-Channel Integration -->
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 80px; height: 80px; border-radius: 50%; background-color: #e3f2fd; display: flex; justify-content: center; align-items: center;">
+                                <i class="bi bi-globe" style="font-size: 32px; color: #007bff;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title fw-bold">Multi-Channel Integration</h3>
+                                <p class="card-text">
+                                    Seamlessly connect with your audience through websites, live chat, and messaging
+                                    apps.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Analytics & Insights -->
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 80px; height: 80px; border-radius: 50%; background-color: #fff3e0; display: flex; justify-content: center; align-items: center;">
+                                <i class="bi bi-graph-up-arrow" style="font-size: 32px; color: #ff9800;"></i>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title fw-bold">Analytics & Insights</h3>
+                                <p class="card-text">
+                                    Gain actionable insights into customer interactions to drive better business
+                                    decisions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team section-padding" id="team"
+        style="min-height: 100vh; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <!-- Card Wrapper -->
+            <div class="card shadow-lg p-4 border-0" style="width: 100%; max-width: 1200px;">
+                <!-- Section Header -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-header text-center pb-5">
+                            <h2 class="fw-bold">Meet Our Team</h2>
+                            <p class="text-muted">
+                                Dedicated professionals shaping the future of customer communication through AI-driven
+                                solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Members Cards -->
+                <div class="row justify-content-center">
+                    <!-- Team Member 1 -->
+                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 120px; height: 120px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center;">
+                                <img src="../static/images/team-1.jpg" alt="Usman Azad" class="img-fluid rounded-circle"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title fw-bold">Hira Ali</h3>
+                                <p class="card-text">
+                                    A visionary leader driving innovation in AI technology. Passionate about delivering
+                                    seamless customer experiences through RoboReply's solutions.
+                                </p>
+                                <p class="socials">
+                                    <a href="https://twitter.com/usman" target="_blank">
+                                        <i class="bi bi-twitter text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/usman" target="_blank">
+                                        <i class="bi bi-facebook text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/usman" target="_blank">
+                                        <i class="bi bi-linkedin text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/usman" target="_blank">
+                                        <i class="bi bi-instagram text-dark mx-1"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 120px; height: 120px; border-radius: 50%; background-color: #e3f2fd; display: flex; justify-content: center; align-items: center;">
+                                <img src="../static/images/team-2.jpg" alt="Mudassar" class="img-fluid rounded-circle"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title fw-bold">Iqra Zafar</h3>
+                                <p class="card-text">
+                                    An AI specialist focused on enhancing user experiences with smart automation tools
+                                    and effective customer support strategies.
+                                </p>
+                                <p class="socials">
+                                    <a href="https://twitter.com/mudassar" target="_blank">
+                                        <i class="bi bi-twitter text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/mudassar" target="_blank">
+                                        <i class="bi bi-facebook text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/mudassar" target="_blank">
+                                        <i class="bi bi-linkedin text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/mudassar" target="_blank">
+                                        <i class="bi bi-instagram text-dark mx-1"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+                            <div class="icon-circle mb-4"
+                                style="width: 120px; height: 120px; border-radius: 50%; background-color: #fff3e0; display: flex; justify-content: center; align-items: center;">
+                                <img src="../static/images/team-3.jpg" alt="John Doe" class="img-fluid rounded-circle"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title fw-bold">Safawan</h3>
+                                <p class="card-text">
+                                    An innovative problem solver passionate about delivering efficient AI solutions to
+                                    enhance customer interaction across various channels.
+                                </p>
+                                <p class="socials">
+                                    <a href="https://twitter.com/johndoe" target="_blank">
+                                        <i class="bi bi-twitter text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/johndoe" target="_blank">
+                                        <i class="bi bi-facebook text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/johndoe" target="_blank">
+                                        <i class="bi bi-linkedin text-dark mx-1"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/johndoe" target="_blank">
+                                        <i class="bi bi-instagram text-dark mx-1"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing section-padding" id="pricing"
+        style="min-height: 100vh; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h2 class="fw-bold">Our Pricing Plans</h2>
+                        <p class="text-muted">
+                            Choose the perfect plan that fits your needs and budget. Enjoy premium features and seamless
+                            services with every plan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="row justify-content-center">
+                <!-- Plan 1: 1 Month -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm p-3"
+                        style="border-top: 5px solid #ff9800; border-radius: 8px; background-color: #fff;">
+                        <div class="card-body text-center">
+                            <h3 class="card-title fw-bold text-warning">1 Month Plan</h3>
+                            <h2 class="fw-bold">$29</h2>
+                            <ul class="list-unstyled text-muted">
+                                <li>✔ AI Chatbot Setup</li>
+                                <li>✔ 24/7 Support</li>
+                                <li>✔ Basic Analytics</li>
+                                <li>✔ Up to 1,000 Responses</li>
+                            </ul>
+                            <button class="btn btn-warning mt-3">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan 2: 6 Months -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm p-3"
+                        style="border-top: 5px solid #007bff; border-radius: 8px; background-color: #fff;">
+                        <div class="card-body text-center">
+                            <h3 class="card-title fw-bold text-primary">6 Months Plan</h3>
+                            <h2 class="fw-bold">$149</h2>
+                            <ul class="list-unstyled text-muted">
+                                <li>✔ Everything in 1 Month Plan</li>
+                                <li>✔ Advanced Analytics</li>
+                                <li>✔ Priority Support</li>
+                                <li>✔ Up to 10,000 Responses</li>
+                            </ul>
+                            <button class="btn btn-primary mt-3">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan 3: 12 Months -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm p-3"
+                        style="border-top: 5px solid #28a745; border-radius: 8px; background-color: #fff;">
+                        <div class="card-body text-center">
+                            <h3 class="card-title fw-bold text-success">12 Months Plan</h3>
+                            <h2 class="fw-bold">$249</h2>
+                            <ul class="list-unstyled text-muted">
+                                <li>✔ Everything in 6 Months Plan</li>
+                                <li>✔ Custom Integrations</li>
+                                <li>✔ Unlimited Responses</li>
+                                <li>✔ Dedicated Account Manager</li>
+                            </ul>
+                            <button class="btn btn-success mt-3">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us section-padding" id="contact"
+        style="min-height: 100vh; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center;">
+        <div class="card shadow-lg p-4 border-0 container">
+            <div class="row align-items-center">
+                <!-- Left Side: Image -->
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="contact-image text-center">
+                        <img src="../static/images/contact-us.avif" alt="Contact Us" class="img-fluid rounded shadow"
+                            style="max-height: 400px; object-fit: cover;" />
+                    </div>
+                </div>
+
+                <!-- Right Side: Contact Form -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0 p-4">
+                        <div class="card-body">
+                            <div class="section-header text-center mb-4">
+                                <h2 class="fw-bold">Contact Us</h2>
+                                <p class="text-muted">We'd love to hear from you! Fill out the form below to get in
+                                    touch.</p>
+                            </div>
+                            <form>
+                                <!-- Name -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Enter your full name"
+                                        required />
+                                </div>
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" id="email" class="form-control"
+                                        placeholder="Enter your email address" required />
+                                </div>
+                                <!-- Subject -->
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" id="subject" class="form-control" placeholder="Enter the subject"
+                                        required />
+                                </div>
+                                <!-- Message -->
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea id="message" class="form-control" rows="4"
+                                        placeholder="Enter your message" required></textarea>
+                                </div>
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column with Product & Company info -->
+                <div class="col-md-4">
+                    <h5>RoboReply</h5>
+                    <p class="text-light-gray">AI-powered chatbot for 24/7 customer support.</p>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Product</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light-gray">Chatbot</a></li>
+                        <li><a href="#" class="text-light-gray">Integrations</a></li>
+                        <li><a href="#" class="text-light-gray">Pricing</a></li>
+                        <li><a href="#" class="text-light-gray">Live Chat</a></li>
+                    </ul>
+                </div>
+                <!-- Company Information -->
+                <div class="col-md-2">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#about" class="text-light-gray">About Us</a></li>
+                        <li><a href="#services" class="text-light-gray">Services</a></li>
+                        <li><a href="#pricing" class="text-light-gray">Pricing</a></li>
+                        <li><a href="#team" class="text-light-gray">Our Team</a></li>
+                    </ul>
+                </div>
+                <!-- Use Cases Section -->
+                <div class="col-md-2">
+                    <h5>Use Cases</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light-gray ">WhatsApp Business</a></li>
+                        <li><a href="#" class="text-light-gray">Instagram</a></li>
+                        <li><a href="#" class="text-light-gray">Tiktok</a></li>
+                        <li><a href="#" class="text-light-gray">Website</a></li>
+                    </ul>
+                </div>
+                <!-- Resources Section -->
+                <div class="col-md-2">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light-gray">Community</a></li>
+                        <li><a href="#" class="text-light-gray">Blog</a></li>
+                        <li><a href="#" class="text-light-gray">Customer Story</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="my-12" style="border-top: 2px solid #fff;">
+
+            <!-- Bottom Row: Copyright and Links -->
+            <div class="row">
+                <!-- Left Side: Copyright -->
+                <div class="col-md-6">
+                    <p class="text-light-gray">© 2023 RoboReply. All rights reserved.</p>
+                </div>
+
+                <!-- Right Side: Footer Links -->
+                <div class="col-md-6 text-end">
+                    <p>
+                        <a href="#" class="text-light-gray">Terms of Service</a> |
+                        <a href="#" class="text-light-gray">Privacy Policy</a> |
+                        <a href="#" class="text-light-gray">Cookie Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

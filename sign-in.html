@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body
+  style="min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #00c6ff, #0072ff);">
+  <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%; border-radius: 15px;">
+    <h2 class="text-center mb-4" style="color: #333;">Login</h2>
+    <form>
+      <!-- Email Input -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" required />
+      </div>
+
+      <!-- Password Input -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" required />
+          <button class="input-group-text" type="button" onclick="togglePassword()" style="cursor: pointer;">
+            <i id="password-icon" class="fas fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe" />
+          <label for="rememberMe" class="form-check-label">Remember Me</label>
+        </div>
+
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="btn btn-primary w-100" style="padding: 10px; font-size: 1rem;">
+        Login
+      </button>
+
+      <!-- Signup Redirect -->
+      <div class="text-center mt-3">
+        <p>
+          Don't have an account?
+          <a href="signup" class="text-primary">Register Account</a>
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal for Successful Login -->
+  <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="welcomeModalLabel">Welcome!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Welcome back, <span id="welcome-name"></span>!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Proceed to Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Incorrect Login Details -->
+  <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalLabel">Login Failed</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="error-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Toggle Password Visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const passwordIcon = document.getElementById("password-icon");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordIcon.classList.remove("fa-eye");
+        passwordIcon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        passwordIcon.classList.remove("fa-eye-slash");
+        passwordIcon.classList.add("fa-eye");
+      }
+    }
+
+    document.querySelector("form").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the form from submitting the normal way
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Send the credentials to Flask backend via AJAX
+      fetch("/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `email=${email}&password=${password}`,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            // Show error modal if login fails
+            document.getElementById("error-message").innerText = data.error;
+            const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+            errorModal.show();
+          } else if (data.message === "Login successful") {
+            // Show success modal if login is successful
+            document.getElementById("welcome-name").innerText = data.user_name;
+            const welcomeModal = new bootstrap.Modal(document.getElementById("welcomeModal"));
+            welcomeModal.show();
+
+            // Redirect to dashboard after closing the modal
+            const closeButton = document.querySelector("#welcomeModal .btn-primary");
+            closeButton.addEventListener("click", function () {
+              window.location.href = "/dashboard"; // Redirect to the dashboard
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error during login:", error);
+          alert("Something went wrong. Please try again later.");
+        });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

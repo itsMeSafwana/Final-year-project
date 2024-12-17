@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body
+    style="min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #00c6ff, #0072ff);">
+    <div class="card shadow-lg p-4" style="max-width: 900px; width: 100%; border-radius: 15px;">
+        <div class="row g-0">
+            <!-- Signup Image Section -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <img src="../static/images/signup.png" alt="Signup illustration" class="img-fluid"
+                    style="max-height: 500px;" />
+            </div>
+
+            <!-- Signup Form Section -->
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Create Account</h2>
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile Number</label>
+                            <input type="tel" class="form-control" id="mobile" name="mobile" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" required />
+                                <button type="button" class="btn btn-outline-secondary"
+                                    onclick="togglePassword('password', 'password-icon')">
+                                    <i id="password-icon" class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                    required />
+                                <button type="button" class="btn btn-outline-secondary"
+                                    onclick="togglePassword('confirmPassword', 'confirm-password-icon')">
+                                    <i id="confirm-password-icon" class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                        <div class="text-center mt-3">
+                            <p>
+                                Already have an account?
+                                <a href="/signin" class="text-primary">Login</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Success</h5>
+                </div>
+                <div class="modal-body">
+                    Your account has been successfully created!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader Modal -->
+    <div class="modal fade" id="creatingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p>Creating your account, please wait...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        // Form Submission Logic
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+            const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+            successModal.show();
+        });
+
+        document.getElementById("signupForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const mobile = document.getElementById("mobile").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Check password confirmation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Show a modal or loader
+            const creatingModal = new bootstrap.Modal(document.getElementById("creatingModal"));
+            creatingModal.show();
+
+            // Send data to the backend
+            try {
+                const response = await fetch("/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ firstName, lastName, mobile, email, password }),
+                });
+                const result = await response.json();
+
+                creatingModal.hide();
+
+                if (response.ok) {
+                    // Show success modal
+                    const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+                    successModal.show();
+
+                    // Redirect after a delay
+                    setTimeout(() => {
+                        window.location.href = "/dashboard";
+                    }, 2000);
+                } else {
+                    alert(result.error || "An error occurred!");
+                }
+            } catch (error) {
+                creatingModal.hide();
+                alert("Something went wrong. Please try again!");
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
