@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Query Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f7e7;
+            border: 1px solid #d4f4d4;
+            color: #4CAF50;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Error Code Query</h2>
+        <input type="text" id="query" placeholder="Enter error code query..." />
+        <button onclick="getCategory()">Get Category</button>
+        <div id="result" class="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        function getCategory() {
+            // Get the value from the input field
+            const query = document.getElementById('query').value;
+            
+            // Check if the input is empty
+            if (!query.trim()) {
+                alert("Please enter a query!");
+                return;
+            }
+
+            // Create the POST request data
+            const data = { query: query };
+
+            // Make the API request
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the predicted category in the result div
+                const resultDiv = document.getElementById('result');
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `Predicted Category: ${data.predicted_category}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Something went wrong! Please try again.");
+            });
+        }
+    </script>
+</body>
+</html>

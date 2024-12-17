@@ -1,0 +1,335 @@
+
+/* Custom CSS For Over Website */
+
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Rounded button styling */
+.btn-rounded {
+  border-radius: 12px;
+  padding: 8px 20px;
+}
+
+/* Hover effect for Sign In button */
+.sign-in-btn {
+  background-color: #0066ff;
+  color: #fff;
+}
+
+.sign-in-btn:hover {
+  color: #a6d5f0;
+  border-color: white;
+  text-decoration: none;
+}
+
+/* Hover effect for Sign Up button */
+.sign-up-btn:hover {
+  background-color: rgb(110, 17, 224) !important;
+  color: white;
+  text-decoration: none;
+}
+
+/* Space adjustments */
+.navbar-brand {
+  margin-right: auto; /* Pushes logo to the left */
+}
+
+.navbar-collapse {
+  justify-content: center; /* Centers the navbar items */
+}
+
+.d-flex.ms-auto {
+  margin-left: auto; /* Pushes buttons to the right */
+}
+
+.hero {
+  color: white;
+  padding: 80px 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero .btn-light {
+  color: #0066ff;
+  font-weight: bold;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+}
+
+.hero .btn-light:hover {
+  background-color: #e0e0e0;
+}
+
+.feature-hover {
+  background-color: #ffffff;
+  border-radius: 33px !important; /* Rounded borders */
+  transition: all 0.3s ease; /* Smooth hover effect */
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.feature-hover:hover {
+  background-color: #0066ff; /* Hover color */
+  color: #ffffff; /* Change text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Responsive Alignment Fix */
+.text-md-end {
+  text-align: end;
+}
+
+.text-md-start {
+  text-align: start;
+}
+
+@media (max-width: 768px) {
+  .text-md-end,
+  .text-md-start {
+    text-align: center; /* Adjust alignment for smaller screens */
+  }
+}
+
+/* Link hover effect */
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  color: #0066ff; /* Icon color */
+}
+
+/* Channels Section */
+.channels {
+  padding: 60px 0;
+}
+
+.channels .row div {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.channels .row div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonials Section */
+/* Add some styling to the testimonial cards */
+.testimonial-card {
+  background-color: white; /* Ensure background is white */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Elevate the card on hover */
+}
+
+/* Styling for the testimonial text */
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #333;
+}
+
+/* Styling for the divider */
+hr.my-4 {
+  border-top: 2px solid #0066ff;
+  width: 40%;
+  margin: 20px auto;
+}
+
+/* Image and name alignment */
+.testimonial-image img {
+  object-fit: cover;
+}
+
+.testimonial-image h5 {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.testimonial-image p {
+  font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 0;
+}
+
+.text-light-gray {
+  color: #aca0a0; /* Light grey color */
+}
+
+.text-light-gray:hover {
+  color: #ffffff; /* White color on hover */
+  text-decoration: none;
+}
+
+footer h5 {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer ul li a {
+  color: #ffffff;
+  transition: color 0.2s;
+}
+
+footer ul li a:hover {
+  color: #e0e0e0;
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+footer .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer hr.my-4 {
+  border-top: 2px solid #ffffff;
+}
+
+
+
+/* Chat CSS */
+/* Custom Styling */
+
+/* Left Sidebar */
+#chat-sidebar {
+  background-color: #2f2f2f;  /* Darker sidebar background */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+/* Sidebar Chat Items */
+.list-group-item {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #0066FF;  /* Change color on hover */
+  transform: scale(1.05);  /* Slight scaling on hover */
+}
+
+/* Chat Box */
+.chat-box {
+  background-color: #f7f7f7;  /* Light background for chat messages */
+  border-radius: 15px;
+  padding: 20px;
+  max-height: 75vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* User & Bot Messages */
+.chat-message {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  max-width: 80%;
+}
+
+.bot-message {
+  background-color: #e9ecef;
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  border-radius: 15px 15px 0 15px;
+}
+
+/* Chat Input */
+.chat-input {
+  padding-top: 10px;
+}
+
+.chat-input textarea {
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.chat-input button {
+  background-color: #0066FF;
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+/* Toggle Button */
+#toggle-chat {
+  background-color: #0066FF;
+  color: white;
+  border-radius: 25px;
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #0066FF;
+  border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+

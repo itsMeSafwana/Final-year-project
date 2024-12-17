@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Assistant Bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Custom styling */
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            color: white;
+        }
+
+        /* .sidebar {
+            background-color: #343a40;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            z-index: 99;
+            transition: width 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+
+        .sidebar .list-group-item {
+            background-color: #343a40;
+            border: none;
+            color: white;
+        }
+
+        .sidebar .list-group-item:hover {
+            background-color: #495057;
+            cursor: pointer;
+        } */
+
+        .chat-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-input {
+            display: flex;
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input textarea {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            height: 150px;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            height: 40px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: center;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100vh - 180px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 75%;
+            font-size: 16px;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            /* Align to the left */
+            border-top-right-radius: 15px;
+            border-top-left-radius: 0;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            /* Align to the right */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 0;
+        }
+
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input textarea {
+            resize: none;
+        }
+
+        .chat-input button,
+        .chat-input label {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Windows Assistant Bot</a>
+            <div class="d-flex align-items-center">
+                <span class="navbar-text me-3 text-white">Hello, {{ user_name }}</span>
+                <img src="../static/images/user-default.png" alt="Profile Image" class="rounded-circle" width="40">
+                <!-- Logout Button -->
+                <!-- Clear Chat Button -->
+                <button class="btn btn-warning ms-3" id="clear-chat-btn">Clear Chats</button>
+                <button class="btn btn-danger ms-3" id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <!-- <div id="sidebar" class="sidebar">
+        <div class="fs-3 mt-4 text-center">Chats</div>
+        <div class="list-group mt-3">
+            <a href="#" class="list-group-item list-group-item-action">How to Copy in MS Word</a>
+            <a href="#" class="list-group-item list-group-item-action">How to solve the 400 stat</a>
+            <a href="#" class="list-group-item list-group-item-action">How to ........................</a>
+            <a href="#" class="list-group-item list-group-item-action">How to Copy in MS Word</a>
+            <a href="#" class="list-group-item list-group-item-action">How to solve the 400 stat</a>
+        </div>
+    </div> -->
+
+    <!-- Main Chat Area -->
+    <div class="chat-container">
+        <div class="chat-box">
+            {% for chat in user_chats %}
+            <div class="chat-message user-message">
+                {{ chat.query }}
+            </div>
+            <div class="chat-message bot-message">
+                {{ chat.response }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input d-flex align-items-center">
+            <textarea id="user-input" class="form-control me-2" placeholder="Type your message here..."
+                autocomplete="off"></textarea>
+
+            <!-- Upload Picture Button -->
+            <label for="upload-image" class="btn btn-secondary me-2 d-flex align-items-center">
+                <i class="bi bi-camera me-1"></i>
+
+            </label>
+            <input type="file" id="upload-image" accept="image/*" style="display: none;">
+
+            <!-- Send Button -->
+            <button class="btn btn-primary" id="send-btn"><i class="bi bi-send-fill"></i></i></button>
+        </div>
+
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Please wait while extracting text from the image...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal for Logout -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to logout?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Progress Modal (Loading indicator) -->
+    <div class="modal fade" id="progressModal" tabindex="-1" aria-labelledby="progressModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="progressModalLabel">Clearing Chats</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Please wait while we clear your chats...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal for Clear Chats -->
+    <div class="modal fade" id="clearChatsModal" tabindex="-1" aria-labelledby="clearChatsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clearChatsModalLabel">Confirm Clear Chats</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to clear the chat history?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-clear-chats">Clear Chats</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal (Chats Cleared) -->
+    <div class="modal fade" id="chatsClearedModal" tabindex="-1" aria-labelledby="chatsClearedModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatsClearedModalLabel">Chats Cleared</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    All your chats have been cleared successfully.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="close-success-modal"
+                        data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Show Logout Confirmation Modal
+        document.getElementById('logout-btn').addEventListener('click', function (event) {
+            event.preventDefault();
+            var logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+            logoutModal.show();
+        });
+
+        // Show Clear Chats Confirmation Modal
+        document.getElementById('clear-chat-btn').addEventListener('click', function () {
+            const clearChatModal = new bootstrap.Modal(document.getElementById('clearChatsModal'));
+            clearChatModal.show();
+        });
+
+        // Clear chats if confirmed
+        document.getElementById('confirm-clear-chats').addEventListener('click', function () {
+            // Hide the confirmation modal immediately
+            const clearChatModalElement = document.getElementById('clearChatsModal');
+            const clearChatModal = bootstrap.Modal.getInstance(clearChatModalElement);
+            clearChatModal.hide();
+
+            // Send request to clear chats
+            fetch('/clear_chats', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-User-ID': '{{ user_id }}'  // Include user_id in request headers
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Show the success modal (chats cleared)
+                        const chatsClearedModal = new bootstrap.Modal(document.getElementById('chatsClearedModal'));
+                        chatsClearedModal.show();
+
+                        // Clear the chat box on the frontend
+                        clearChatBox();
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert("An error occurred while clearing chats.");
+                });
+        });
+
+        // Close Success Modal
+        document.getElementById('close-success-modal').addEventListener('click', function () {
+            const chatsClearedModalElement = document.getElementById('chatsClearedModal');
+            const chatsClearedModal = bootstrap.Modal.getInstance(chatsClearedModalElement);
+            chatsClearedModal.hide();
+        });
+
+        function clearChatBox() {
+            const chatBox = document.querySelector(".chat-box");
+            while (chatBox.firstChild) {
+                chatBox.removeChild(chatBox.firstChild);
+            }
+        }
+
+        // Get modal instance
+        const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+
+        // Handle Image Upload
+        document.getElementById('upload-image').addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = async function () {
+                    const imageData = reader.result;
+
+                    // Show loading modal
+                    loadingModal.show();
+
+                    // Perform OCR using Tesseract.js
+                    try {
+                        const result = await Tesseract.recognize(imageData, 'eng', {
+                            logger: (info) => console.log(info), // Log progress (optional)
+                        });
+                        console.log('Extracted Text:', result.data.text);
+
+                        // Add extracted text to textarea
+                        document.getElementById('user-input').value = result.data.text;
+                    } catch (error) {
+                        console.error('OCR Error:', error);
+                        alert('Failed to extract text from image.');
+                    } finally {
+                        // Hide loading modal
+                        loadingModal.hide();
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
